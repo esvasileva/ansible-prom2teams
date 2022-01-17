@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker stop %N
 ExecStartPre=-/usr/bin/docker rm %N
 ExecStartPre=/usr/bin/docker pull idealista/prom2teams:{{ prom2teams_image_version }}
-ExecStart=/usr/bin/docker run --rm  --name %N \
+ExecStart=/usr/bin/docker run -it --rm --name %N \
                               -p 8089:8089 \
                               -e PROM2TEAMS_GROUP_ALERTS_BY="{{ prom2teams_group_alerts_by }}" \
                               -e PROM2TEAMS_CONNECTOR="{{ prom2teams_connector }}" \
