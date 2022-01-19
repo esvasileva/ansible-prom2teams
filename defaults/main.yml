@@ -1,0 +1,3 @@
+prom2teams_image_version: 3.2.3
+prom2teams_group_alerts_by: instance
+#prom2teams_connector: 
