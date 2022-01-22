@@ -9,10 +9,14 @@ Restart=always
 ExecStartPre=-/usr/bin/docker stop %N
 ExecStartPre=-/usr/bin/docker rm %N
 ExecStartPre=/usr/bin/docker pull idealista/prom2teams:{{ prom2teams_image_version }}
-ExecStart=/usr/bin/docker run -it --rm --name %N \
-                              -p 8089:8089 \
-                              -e PROM2TEAMS_GROUP_ALERTS_BY="{{ prom2teams_group_alerts_by }}" \
-                              -e PROM2TEAMS_CONNECTOR="{{ prom2teams_connector }}" \
+ExecStart=/usr/bin/docker run --rm --name %N \
+                              -p {{ prom2teams_port_host }}:{{ prom2teams_port_container }} \
+                              -e PROM2TEAMS_PORT={{ prom2teams_port_container }} \
+                              -e PROM2TEAMS_GROUP_ALERTS_BY={{ prom2teams_group_alerts_by }} \
+                              -e PROM2TEAMS_CONNECTOR={{ prom2teams_connector }} \
+                              -e PROM2TEAMS_LOGLEVEL={{ prom2teams_loglevel }} \
+                              -e PROM2TEAMS_PROMETHEUS_METRICS={{ prom2teams_prometheus_metrics }} \
+                              -e PROM2TEAMS_HOST={{ prom2teams_host }} \
                               idealista/prom2teams:{{ prom2teams_image_version }}
 
 [Install]
