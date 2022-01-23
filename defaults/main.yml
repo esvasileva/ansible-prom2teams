@@ -1,3 +1,8 @@
 prom2teams_image_version: 3.2.3
-prom2teams_group_alerts_by: instance
+prom2teams_group_alerts_by: instance 
+prom2teams_port_host: 8089
+prom2teams_port_container: 8089
+prom2teams_loglevel: INFO
+prom2teams_prometheus_metrics: true
+prom2teams_host: 0.0.0.0
 #prom2teams_connector: 
